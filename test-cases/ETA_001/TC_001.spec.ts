@@ -32,54 +32,26 @@ test('Verify Login Heading is Visible', async ({ page }) => {
 await page.goto('https://opensource-demo.orangehrmlive.com/');      
 
 // Expect the login heading to be visible
-const loginHeading:Locator = page.getByRole('heading', { name: 'Login' });
-console.log("Login Heading is: " + await loginHeading.textContent());
-
-await expect(loginHeading).toBeVisible();
+const loginPage = new LoginPage(page);
+await expect(loginPage.loginHeading).toBeVisible();
 });
 
 test('Verify Default User NameText is Visible', async ({ page }) => {
 await page.goto('https://opensource-demo.orangehrmlive.com/'); 
 
 // Expect the login text to be visible
-const loginText:Locator = page.getByText('Username : Admin');
-console.log("Login Text is: " + await loginText.textContent());
+const loginPage = new LoginPage(page);
 
-await expect(loginText).toBeVisible();
+await expect(loginPage.defaultUsernameText).toBeVisible();
 });
 
 test('Verify Default Password Text is Visible', async ({ page }) => {
 await page.goto('https://opensource-demo.orangehrmlive.com/');  
 
 // Expect the password text to be visible
-const passwordText:Locator = page.getByText('Password : admin123');
-console.log("Password Text is: " + await passwordText.textContent());
-
-await expect(passwordText).toBeVisible();
+const loginPage = new LoginPage(page);
+await expect(loginPage.defaultPasswordText).toBeVisible();
 });
-
-// test('Verify User Name Label is Visible', async ({ page }) => {
-// await page.goto('https://opensource-demo.orangehrmlive.com/');      
-// // Expect the username label to be visible
-// const usernameLabel:Locator = page.locator('label.oxd-label', {
-//   hasText: 'Username'
-// });
-// // console.log("Username Label is: " + await usernameLabel.textContent()); 
-// await expect(usernameLabel).toBeVisible();
-// });
-
-// test('Verify Password Label is Visible', async ({ page }) => {
-// await page.goto('https://opensource-demo.orangehrmlive.com/');  
-
-// // wait for the DOM content to be loaded before proceeding
-// await page.waitForLoadState('domcontentloaded');
-// // Expect the password label to be visible
-//   const passwordLabel:Locator = page.locator('label.oxd-label', {
-//     hasText: 'Password'
-//   });
-// // console.log("Password Label is: " + await passwordLabel.textContent()); 
-// await expect(passwordLabel).toBeVisible();
-// });
 
 test('Verify User Name Input Field is Visible', async ({ page }) => {
 await page.goto('https://opensource-demo.orangehrmlive.com/');  
